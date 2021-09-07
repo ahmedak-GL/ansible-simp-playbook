@@ -1,0 +1,10 @@
+# time-sync
+
+- hosts: all
+  tasks: 
+  - name: Install ntpd
+    yum:
+      name: ntp
+      state: latest
+
+# ansible-playbook -l "web" ntpd.yml
