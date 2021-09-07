@@ -1,0 +1,21 @@
+- hosts: all
+  tasks: 
+  - name: Install ntpd
+    yum:
+      name: ntp
+      state: latest
+
+
+- hosts: web
+  tasks: 
+  - name: Install Apache
+    yum:
+      name: httpd
+      state: latest
+
+- hosts: Database
+  tasks: 
+  - name: Install MySQL
+    yum:
+      name: mariadb-server
+      state: latest
