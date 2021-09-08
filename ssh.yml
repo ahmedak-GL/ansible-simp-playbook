@@ -1,4 +1,4 @@
-- hosts: all
+- name: ssh-key
   tasks: 
   - name: Install ssh key
     authorized_key:
