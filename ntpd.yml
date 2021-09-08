@@ -1,10 +1,28 @@
-# time-sync
-
 - hosts: all
-  tasks: 
+  tasks:
   - name: Install ntpd
-    yum:
+    package: 
       name: ntp
       state: latest
 
-# ansible-playbook -l "web" ntpd.yml 
+  - name: Delete unused time servers
+    lineinfile: 
+      path: /etc/ntp.conf
+      regexp: "^server [1,2,3].*iburst$"
+      state: absent
+    notify: restart ntpd
+
+  - name: Reconfigure time servers
+    lineinfile: 
+      path: /etc/ntp.conf
+      regexp: "^server 0.*iburst$"
+      line: "server pool.ntp.org iburst"
+      state: present
+      backup: yes
+    notify: restart ntpd
+
+  handlers: 
+  - name: restart ntpd
+    service: 
+      name: ntpd
+      state: restarted

@@ -1,7 +1,5 @@
-- name: User Create
-  tasks: 
+- hosts: all
+  tasks:
   - name: Create User
     user:
-      name: tom
-
-    
+      name: ahmedak001-new   
