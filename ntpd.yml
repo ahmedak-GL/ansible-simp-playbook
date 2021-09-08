@@ -7,4 +7,4 @@
       name: ntp
       state: latest
 
-# ansible-playbook -l "web" ntpd.yml
+# ansible-playbook -l "web" ntpd.yml 
