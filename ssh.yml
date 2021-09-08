@@ -4,4 +4,4 @@
     authorized_key:
       user: ec2-user
       state: present
-      key: "ssh-key"
+      key: "your-ssh-key"
